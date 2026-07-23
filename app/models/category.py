@@ -1,0 +1,9 @@
+from app.database import Base
+from sqlalchemy import Column, Integer, String, Float, Text, DateTime,ForeignKey
+from sqlalchemy.sql import func
+
+class Category(Base):
+    __tablename__ = "categories"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, unique=True, index=True, nullable=False)
+    parent_id = Column(Integer, ForeignKey("categories.id"), nullable=True)
